@@ -16,7 +16,7 @@ and the Flutter guide for
 A powerful and flexible Flutter widget for handling API requests with built-in loading states, error handling, and retry mechanisms.
 
 [![pub package](https://img.shields.io/pub/v/api_widget.svg)](https://pub.dev/packages/api_widget)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://pub.dev/packages/api_widget/license)
 [![GitHub issues](https://img.shields.io/github/issues/Digvijaysinh2204/Api-Widget)](https://github.com/Digvijaysinh2204/Api-Widget/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/Digvijaysinh2204/Api-Widget)](https://github.com/Digvijaysinh2204/Api-Widget/pulls)
 
@@ -25,8 +25,7 @@ A powerful and flexible Flutter widget for handling API requests with built-in l
 - [Pub.dev Package](https://pub.dev/packages/api_widget)
 - [GitHub Repository](https://github.com/Digvijaysinh2204/Api-Widget)
 - [Issue Tracker](https://github.com/Digvijaysinh2204/Api-Widget/issues)
-- [Changelog](CHANGELOG.md)
-- [License](LICENSE)
+- [Changelog](https://pub.dev/packages/api_widget/changelog)
 
 ## Features
 
@@ -47,7 +46,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  api_widget: ^1.0.1
+  api_widget: ^1.0.2
 ```
 
 ## Getting Started

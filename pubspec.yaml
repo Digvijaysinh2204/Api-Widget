@@ -1,6 +1,6 @@
 name: api_widget
 description: A powerful and flexible Flutter widget for handling API requests with built-in loading states, error handling, and retry mechanisms.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/Digvijaysinh2204/Api-Widget
 repository: https://github.com/Digvijaysinh2204/Api-Widget
 issue_tracker: https://github.com/Digvijaysinh2204/Api-Widget/issues
@@ -11,10 +11,7 @@ environment:
   flutter: ">=3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   http: '>=1.1.0 <2.0.0'
-  cupertino_icons: '>=1.0.2 <2.0.0'
 
 dev_dependencies:
   flutter_test:
@@ -23,5 +20,4 @@ dev_dependencies:
   mockito: ^5.4.5
   build_runner: ^2.4.15
 
-flutter:
-  uses-material-design: true
+
