@@ -46,7 +46,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  api_widget: ^1.0.2
+  api_widget: ^1.0.3
 ```
 
 ## Getting Started
@@ -140,7 +140,6 @@ final apiWidget = ApiWidget(
   url: 'https://api.example.com/data',
   method: HttpMethod.get,
   context: context,
-  retryCount: 3,
   retryDelay: const Duration(seconds: 2),
 );
 ```
@@ -169,7 +168,6 @@ The main widget for making API requests.
 - `headers`: Optional custom headers
 - `files`: Optional files for multipart requests
 - `fields`: Optional fields for multipart requests
-- `retryCount`: Number of retry attempts
 - `retryDelay`: Delay between retry attempts
 
 ## Contributing
