@@ -46,7 +46,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  api_widget: ^0.0.1
+  api_widget: ^1.0.0
 ```
 
 ## Usage
