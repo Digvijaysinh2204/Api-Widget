@@ -49,7 +49,6 @@
 /// ```
 ///
 /// For more information and examples, see the [README](https://github.com/yourusername/api_widget).
-library api_widget;
 
 export 'src/api_widget_base.dart';
 export 'src/api_config.dart';
