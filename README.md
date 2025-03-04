@@ -17,6 +17,16 @@ A powerful and flexible Flutter widget for handling API requests with built-in l
 
 [![pub package](https://img.shields.io/pub/v/api_widget.svg)](https://pub.dev/packages/api_widget)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/Digvijaysinh2204/Api-Widget)](https://github.com/Digvijaysinh2204/Api-Widget/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/Digvijaysinh2204/Api-Widget)](https://github.com/Digvijaysinh2204/Api-Widget/pulls)
+
+## Links
+
+- [Pub.dev Package](https://pub.dev/packages/api_widget)
+- [GitHub Repository](https://github.com/Digvijaysinh2204/Api-Widget)
+- [Issue Tracker](https://github.com/Digvijaysinh2204/Api-Widget/issues)
+- [Changelog](CHANGELOG.md)
+- [License](LICENSE)
 
 ## Features
 
@@ -168,7 +178,7 @@ try {
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
