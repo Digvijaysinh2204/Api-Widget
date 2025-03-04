@@ -19,6 +19,9 @@ enum HttpMethod {
   /// DELETE request method
   delete,
 
+  /// PATCH request method
+  patch,
+
   /// Multipart form data request method
   multipart,
 }
@@ -194,6 +197,12 @@ class ApiWidget {
         case HttpMethod.delete:
           response = await client
               .delete(Uri.parse(url), headers: header)
+              .timeout(ApiConfig.instance.timeoutDuration);
+          break;
+
+        case HttpMethod.patch:
+          response = await client
+              .patch(Uri.parse(url), headers: header, body: body)
               .timeout(ApiConfig.instance.timeoutDuration);
           break;
       }

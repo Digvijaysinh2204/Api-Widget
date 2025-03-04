@@ -15,7 +15,7 @@ import 'package:http/http.dart' as http;
 class ApiConfig {
   /// The access token used for API authentication.
   /// This token will be automatically added to request headers as a Bearer token.
-  final String accessToken;
+  String accessToken;
 
   /// Callback function to handle user logout.
   /// This is typically called when authentication errors are detected.
@@ -61,7 +61,7 @@ class ApiConfig {
   /// [loaderWidget] is optional and used for the loading overlay.
   /// [customHeader] is optional and adds custom headers to requests.
   /// [createCurl] enables curl command generation in debug mode.
-  const ApiConfig({
+  ApiConfig({
     required this.accessToken,
     required this.onLogoutMethod,
     required this.toastWidget,
@@ -130,4 +130,12 @@ class ApiConfig {
 
   /// Gets the current loader widget function.
   static Widget Function()? get customLoader => instance.loaderWidget;
+
+  /// Updates the access token for API authentication.
+  /// This method should be called when the token needs to be refreshed.
+  ///
+  /// [newToken] is the new access token to be used for subsequent API requests.
+  static void updateAccessToken(String newToken) {
+    instance.accessToken = newToken;
+  }
 }

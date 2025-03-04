@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:api_widget/api_widget.dart';
 import 'package:image_picker/image_picker.dart';
 
+var accessToken = "ABCBCBC";
+
 void main() {
   ApiConfig.initialize(
-    accessToken: 'ABCBCBC',
+    accessToken: accessToken,
     timeoutDuration: const Duration(seconds: 30),
     loaderWidget: () => const CircularProgressIndicator(),
     onLogoutMethod: () {},
@@ -295,7 +297,13 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: _fetchPosts,
+            onPressed: () {
+              setState(() {
+                accessToken = "AFSFSFSFSFSFFSFS";
+                ApiConfig.updateAccessToken(accessToken);
+              });
+              _fetchPosts();
+            },
           ),
         ],
       ),

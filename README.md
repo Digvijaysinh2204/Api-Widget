@@ -30,15 +30,16 @@ A powerful and flexible Flutter widget for handling API requests with built-in l
 
 ## Features
 
-- 🚀 Simple and intuitive API request handling
-- 📱 Built-in loading overlay with customizable widget
-- 🔄 Automatic retry mechanism for failed requests
-- 🎨 Customizable error handling and messages
-- 🔒 Secure header management with token support
-- 📤 Multipart form data support
-- 📝 Detailed request/response logging
-- ⚡ Timeout handling
-- 🔍 Debug mode with curl command generation
+- 🚀 Support for all HTTP methods (GET, POST, PUT, DELETE, PATCH, MULTIPART)
+- 🔄 Built-in loading states and error handling
+- 🎨 Customizable UI components
+- 🔒 Automatic token management with refresh support
+- 🔁 Retry mechanism for failed requests
+- 🐛 Debug features (curl command generation)
+- 📱 Platform support for iOS, Android, Web, Windows, macOS, and Linux
+- 📦 Zero dependencies (except http package)
+- ✅ Comprehensive test coverage
+- 📚 Detailed documentation and examples
 
 ## Installation
 
@@ -46,14 +47,14 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  api_widget: ^1.0.0
+  api_widget: ^1.0.1
 ```
 
-## Usage
+## Getting Started
 
-### Basic Setup
+### Basic Usage
 
-First, configure the API widget with your settings:
+1. Initialize the API configuration:
 
 ```dart
 void main() {
@@ -65,21 +66,21 @@ void main() {
       // Handle logout
     },
     toastWidget: (context, message) {
-      // Show toast message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(message)),
+      );
     },
     handleResponseStatus: (context, response) {
       // Handle specific status codes
     },
   );
-  
   runApp(MyApp());
 }
 ```
 
-### Making API Requests
+2. Use the API widget in your code:
 
 ```dart
-// GET request
 final apiWidget = ApiWidget(
   url: 'https://api.example.com/data',
   method: HttpMethod.get,
@@ -87,98 +88,94 @@ final apiWidget = ApiWidget(
 );
 
 final response = await apiWidget.sendRequest();
+```
 
-// POST request with body
-final apiWidget = ApiWidget(
-  url: 'https://api.example.com/create',
-  method: HttpMethod.post,
-  context: context,
-  body: jsonEncode({'name': 'John'}),
-);
+### Token Management
 
-final response = await apiWidget.sendRequest();
+The package includes built-in token management with support for runtime token updates:
 
-// Multipart request with file upload
-final file = await ApiWidget.createMultipartFile('file', 'path/to/file.jpg');
+```dart
+// Update the access token at runtime
+ApiConfig.updateAccessToken("new_token_here");
+```
+
+This is particularly useful for:
+- Token refresh scenarios
+- User re-authentication
+- Switching between different user sessions
+
+### Advanced Features
+
+#### Multipart Requests
+
+```dart
 final apiWidget = ApiWidget(
   url: 'https://api.example.com/upload',
   method: HttpMethod.multipart,
   context: context,
-  files: {'file': file},
-  fields: {'description': 'My file'},
-);
-
-final response = await apiWidget.sendRequest();
-```
-
-### Custom Headers
-
-You can set custom headers globally or per request:
-
-```dart
-// Global headers
-ApiConfig.instance.customHeader = {
-  'X-Custom-Header': 'value',
-  'Accept': 'application/json',
-};
-
-// Per-request headers
-final apiWidget = ApiWidget(
-  url: 'https://api.example.com/data',
-  method: HttpMethod.get,
-  context: context,
-  customHeaders: {
-    'X-Request-Specific': 'value',
+  fields: {'key': 'value'},
+  files: {
+    'file': await ApiWidget.createMultipartFile(
+      'file',
+      filePath,
+    ),
   },
 );
 ```
 
-### Error Handling
-
-The widget automatically handles common errors and provides retry mechanisms:
+#### Custom Headers
 
 ```dart
-try {
-  final response = await apiWidget.sendRequest();
-  // Handle successful response
-} on TimeoutException {
-  // Handle timeout
-} on http.ClientException {
-  // Handle network errors
-} catch (e) {
-  // Handle other errors
-}
+final apiWidget = ApiWidget(
+  url: 'https://api.example.com/data',
+  method: HttpMethod.get,
+  context: context,
+  headers: {'Custom-Header': 'value'},
+);
+```
+
+#### Retry Mechanism
+
+```dart
+final apiWidget = ApiWidget(
+  url: 'https://api.example.com/data',
+  method: HttpMethod.get,
+  context: context,
+  retryCount: 3,
+  retryDelay: const Duration(seconds: 2),
+);
 ```
 
 ## API Reference
 
 ### ApiConfig
 
-| Property | Type | Description |
-|----------|------|-------------|
-| accessToken | String | Bearer token for authentication |
-| timeoutDuration | Duration | Request timeout duration |
-| retryDelay | Duration | Delay between retry attempts |
-| loaderWidget | Widget Function | Custom loading widget |
-| handleResponseStatus | Function | Custom response status handler |
-| customHeader | Map<String, String> | Global custom headers |
-| createCurl | bool | Enable curl command generation in debug mode |
+The main configuration class for the API widget.
+
+#### Methods
+
+- `initialize()`: Initialize the API configuration
+- `updateAccessToken()`: Update the access token at runtime
 
 ### ApiWidget
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| url | String | Yes | API endpoint URL |
-| method | HttpMethod | Yes | HTTP method (get, post, put, delete, multipart) |
-| context | BuildContext | Yes | Build context for showing overlays |
-| body | dynamic | No | Request body for POST/PUT |
-| showLoader | bool | No | Show loading overlay (default: true) |
-| fields | Map<String, String> | No | Form fields for multipart request |
-| files | Map<String, MultipartFile> | No | Files for multipart request |
+The main widget for making API requests.
+
+#### Constructor Parameters
+
+- `url`: The API endpoint URL
+- `method`: The HTTP method to use
+- `context`: The BuildContext
+- `body`: Optional request body
+- `headers`: Optional custom headers
+- `files`: Optional files for multipart requests
+- `fields`: Optional fields for multipart requests
+- `retryCount`: Number of retry attempts
+- `retryDelay`: Delay between retry attempts
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
